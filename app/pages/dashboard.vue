@@ -10,7 +10,7 @@
         </header>
         <div class="grid grid-cols-4 gap-4 p-4 pt-8">
             <div
-                class="relative col-span-2 h-[86dvh] bg-cover bg-center rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-[0.2deg] transition-all hover:shadow-green-800 duration-500"
+                class="relative col-span-2 h-[86dvh] bg-cover bg-center rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-[0.2deg] transition-all hover:shadow-green-600 duration-500"
                 :style="{ backgroundImage: `url('${randomMeal?.strMealThumb}')` }"
             >
                 <div class="absolute inset-0 bg-black/45"></div>
