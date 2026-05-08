@@ -39,10 +39,17 @@
                     />
                 </div>
 
-                <div class="border-2 p-4 rounded min-h-[500px]">
-                    Discover meals
-                    <div>
-                        <List-item item="mood" />
+                <div class="flex gap-2 border-2 p-4 rounded">
+                    <div calss="">
+                        <div @click="loadDiscover('Categories')" class="p-2 px-3 m-4 rounded-full bg-emerald-50">Categories</div>
+                        <div @click="loadDiscover('Countries')" class="p-2 px-3 m-4 rounded-full bg-emerald-50">Countries</div>
+                        <div @click="loadDiscover('Ingredients')" class="p-2 px-3 m-4 rounded-full bg-emerald-50">Ingredients</div>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xl text-[var(--color-primary)] font-semibold">Discover meals</p>
+                        <div class="max-h-[700px] overflow-y-auto">
+                            <List-item :key="index" v-for="item in discoverItems" :item="item" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -76,7 +83,6 @@ const initMealLogic = async () => {
         }
         
     }
-    console.log("empty")
     //now fetch a new meal and store it in localStorage
     const data  = await $fetch('https://www.themealdb.com/api/json/v1/1/random.php');
     const meal = data?.meals?.[0];
@@ -117,6 +123,28 @@ const initCategoryLogic = async () => {
             category,
             timeStamp: new Date().toISOString()
         }));
+    }
+}
+
+//fetch discover items based on  categories, countries, ingredients
+
+const discoverItems = ref([]);
+
+const endpoints = {
+    Categories: "https://www.themealdb.com/api/json/v1/1/list.php?c=list",
+    Countries: "https://www.themealdb.com/api/json/v1/1/list.php?a=list",
+    Ingredients: "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
+}
+const loadDiscover = async (type) => {
+    const url = endpoints[type];
+    if (!url) return;
+    const data = await $fetch(url);
+    if (type === "Categories") {
+        discoverItems.value = data?.meals?.map(item => item.strCategory) || [];
+    } else if (type === "Countries") {
+        discoverItems.value = data?.meals?.map(item => item.strArea) || [];
+    } else if (type === "Ingredients") {
+        discoverItems.value = data?.meals?.map(item => item.strIngredient) || [];
     }
 }
 
