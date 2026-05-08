@@ -47,7 +47,7 @@
                     </div>
                     <div class="flex-1">
                         <p class="text-xl text-[var(--color-primary)] font-semibold">Discover meals</p>
-                        <div class="max-h-[700px] overflow-y-auto">
+                        <div class="max-h-[500px] overflow-y-auto">
                             <List-item :key="index" v-for="item in discoverItems" :item="item" />
                         </div>
                     </div>
