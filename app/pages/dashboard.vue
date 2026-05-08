@@ -20,7 +20,7 @@
                 </div>
                 <div class="absolute flex items-center bottom-4 left-4 z-10">
                     <p class="text-white text-xl p-6">Try this! or</p>
-                    <button @click="getRandomMeal" class="flex items-center p-4 bg-transparent text-white border-2 border-emerald-600 rounded-xl transition-colors duration-300">Something else <Shuffle class="ml-1" /></button>
+                    <button @click="getRandomMeal" class="flex items-center p-4 bg-transparent hover:bg-emerald-600 text-white border-2 border-emerald-600 rounded-xl transition-colors duration-300">Something else <Shuffle class="ml-1" /></button>
                 </div>
             </div>
             <div class="col-span-2 flex flex-col gap-4">
@@ -40,6 +40,9 @@
 
                 <div class="border-2 p-4 rounded min-h-[500px]">
                     Discover meals
+                    <div>
+                        <List-item item="mood" />
+                    </div>
                 </div>
             </div>
 
@@ -91,6 +94,8 @@ onMounted(() => {
     name.value = localStorage.getItem('name');
     initMealLogic();
 })
+
+
 
 </script>
 
