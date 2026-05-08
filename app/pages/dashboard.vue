@@ -41,9 +41,9 @@
 
                 <div class="flex gap-2 border-2 p-4 rounded">
                     <div calss="">
-                        <div @click="loadDiscover('Categories')" class="p-2 px-3 m-4 rounded-full bg-emerald-50">Categories</div>
-                        <div @click="loadDiscover('Countries')" class="p-2 px-3 m-4 rounded-full bg-emerald-50">Countries</div>
-                        <div @click="loadDiscover('Ingredients')" class="p-2 px-3 m-4 rounded-full bg-emerald-50">Ingredients</div>
+                        <div @click="loadDiscover('Categories')" class="p-2 px-3 m-4 rounded-full bg-emerald-50 cursor-pointer transition-transform duration-200 transform hover:-translate-y-1 hover:scale-102 hover:shadow-md hover:bg-emerald-100">Categories</div>
+                        <div @click="loadDiscover('Countries')" class="p-2 px-3 m-4 rounded-full bg-emerald-50 cursor-pointer transition-transform duration-200 transform hover:-translate-y-1 hover:scale-102 hover:shadow-md hover:bg-emerald-100">Countries</div>
+                        <div @click="loadDiscover('Ingredients')" class="p-2 px-3 m-4 rounded-full bg-emerald-50 cursor-pointer transition-transform duration-200 transform hover:-translate-y-1 hover:scale-102 hover:shadow-md hover:bg-emerald-100">Ingredients</div>
                     </div>
                     <div class="flex-1">
                         <p class="text-xl text-[var(--color-primary)] font-semibold">Discover meals</p>
