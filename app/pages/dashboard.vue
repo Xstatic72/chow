@@ -32,9 +32,10 @@
                         :name="mealOTD?.strMeal"
                     />
                     <Card
+                        v-if="categoryOTD?.strCategory"
                         title="Category of the Day"
-                        image="/assets/images/lily-banse--YHSwy6uqvk-unsplash.jpg"
-                        :name="mealOTD?.strMeal"
+                        :image="categoryOTD?.strCategoryThumb"
+                        :name="categoryOTD?.strCategory"
                     />
                 </div>
 
@@ -55,6 +56,7 @@ import { Search as SearchIcon } from '@lucide/vue';
 import { Heart, Shuffle } from '@lucide/vue';
 
 const mealOTD = ref({})
+const categoryOTD = ref({})
 const name = ref(null)
 const { data: randomMealData, refresh: refreshRandomMeal } = await useFetch('https://www.themealdb.com/api/json/v1/1/random.php')
 
@@ -89,10 +91,40 @@ const initMealLogic = async () => {
     }
 }
 
+//fetch all categories and pick one randomly for the category of the day card
+//store in localStorage with date validation, same as mealOTD
+const initCategoryLogic = async () => {
+    const cachedCategory = localStorage.getItem('categoryOTD');
+    if (cachedCategory) {
+        const parsed = JSON.parse(cachedCategory);
+        const saveDate = new Date(parsed.timeStamp).toDateString();
+        const today = new Date().toDateString();
+        if (saveDate === today) {
+            categoryOTD.value = parsed.category;
+            return;
+        }
+    }
+    
+    // Fetch new category and store it in localStorage
+    let data = await $fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
+
+    const categories = data?.categories || [];
+    if (categories.length > 0) {
+        const randomIndex = Math.floor(Math.random() * categories.length);
+        const category = categories[randomIndex];
+        categoryOTD.value = category;
+        localStorage.setItem('categoryOTD', JSON.stringify({
+            category,
+            timeStamp: new Date().toISOString()
+        }));
+    }
+}
+
 
 onMounted(() => {
     name.value = localStorage.getItem('name');
     initMealLogic();
+    initCategoryLogic();
 })
 
 
