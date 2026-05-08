@@ -153,6 +153,7 @@ onMounted(() => {
     name.value = localStorage.getItem('name');
     initMealLogic();
     initCategoryLogic();
+    loadDiscover('Categories')
 })
 
 
