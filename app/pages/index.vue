@@ -5,12 +5,12 @@
             <h1 class="text-6xl mb-4 font-bold scale-y-[1.5]" style="color: var(--color-primary);">Welcome to Chow</h1>
             <p>Find fun recipes for meals from around the world. Whether you're a seasoned chef or just starting your cooking journey, these recipes are your key to creating mouthwatering masterpieces in your very own kitchen.</p>
             <div class="text-lg flex gap-4 mt-4">
-                <input v-model="name" class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-green-500" type="text" placeholder="What's your name?">
+                <input v-model="name" class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]" type="text" placeholder="What's your name?">
                 <button :disabled="!name.trim()" @click="startExploring" class="btn transition-colors duration-300">Start exploring</button>
 
             </div>
         </div>
-        <div class="w-full rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-1 transition-all hover:shadow-green-800 duration-500">
+        <div class="w-full rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-1 transition-all hover:shadow-[var(--color-btn-hover)] duration-500">
             <img class="object-contain" src="\assets\images\lily-banse--YHSwy6uqvk-unsplash.jpg" alt="Delicious Food">
         </div>
     </div>
@@ -41,8 +41,9 @@
 }
 
 :root {
-    --color-primary: #29ce60;
-    --color-btn-hover: #01b03b;
+    --color-primary: #29c15c;
+    --color-btn-hover: #0ca53f;
+    --color-primary-light: #20d55ccd;
 }
 
 h1 {
@@ -78,7 +79,7 @@ input {
 input:focus {
   outline: 2px solid transparent; /* focus:outline-none */
   outline-offset: 2px;
-  box-shadow: 0 0 0 2px #22c55e;  /* focus:ring-2 focus:ring-green-500 */
+    box-shadow: 0 0 0 2px var(--color-primary);
 }
 
 </style>

@@ -1,16 +1,19 @@
 <template>
     <div>
-        <header class="flex justify-around items-center p-2 bg-gray-100">
+        <header class="flex justify-between px-8 items-center p-2 border-b border-[var(--color-primary-light)]">
             <NuxtLink to="/"><h1 class="text-[var(--color-primary)] text-2xl">Chow</h1></NuxtLink>
-            <p class="text-lg text-[var(--color-primary)] font-semibold opacity-80">Hi, {{ name }}</p>
-            <div class="relative">
-                <SearchIcon class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
-                <input class="w-72 rounded-md border border-gray-300 py-2 pl-10 pr-3 focus:outline-none focus:ring-2 focus:ring-green-500" type="text" placeholder="search for a meal">
+            <div class="flex text-[var(--color-primary)] font-semibold opacity-80">
+                <p class="text-lg ">Hey, {{ name }}</p>
+                <ChevronDown />
+            </div>
+            <div class="relative group">
+                <SearchIcon class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400 group-focus-within:text-[var(--color-primary)] transition-colors duration-200" />
+                <input class="w-80 rounded-full bg-gray-50 border border-gray-200 py-2.5 pl-12 pr-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[var(--color-primary)] transition-all duration-200" type="text" placeholder="search for a meal">
             </div>
         </header>
         <div class="grid grid-cols-4 gap-4 p-4 pt-8">
             <div
-                class="relative col-span-2 h-[86dvh] bg-cover bg-center rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-[0.2deg] transition-all hover:shadow-green-600 duration-500"
+                class="relative cursor-pointer col-span-2 h-[86dvh] bg-cover bg-center rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-[0.2deg] transition-all hover:shadow-[var(--color-btn-hover)] duration-500"
                 :style="{ backgroundImage: `url('${randomMeal?.strMealThumb}')` }"
             >
                 <div class="absolute inset-0 bg-black/45"></div>
@@ -20,7 +23,7 @@
                 </div>
                 <div class="absolute flex items-center bottom-4 left-4 z-10">
                     <p class="text-white text-xl p-6">Try this! or</p>
-                    <button @click="getRandomMeal" class="flex items-center p-4 bg-transparent hover:bg-emerald-600 text-white border-2 border-emerald-600 rounded-xl transition-colors duration-300">Something else <Shuffle class="ml-1" /></button>
+                    <button @click="getRandomMeal" class="flex items-center p-4 bg-transparent hover:bg-[var(--color-btn-hover)] text-white border-2 border-[var(--color-btn-hover)] rounded-xl transition-colors duration-300">Something else <Shuffle class="ml-1" /></button>
                 </div>
             </div>
             <div class="col-span-2 flex flex-col gap-4">
@@ -39,14 +42,17 @@
                     />
                 </div>
 
-                <div class="flex gap-2 border-2 p-4 rounded">
-                    <div calss="">
-                        <div @click="loadDiscover('Categories')" class="p-2 px-3 m-4 rounded-full bg-emerald-50 cursor-pointer transition-transform duration-200 transform hover:-translate-y-1 hover:scale-102 hover:shadow-md hover:bg-emerald-100">Categories</div>
-                        <div @click="loadDiscover('Countries')" class="p-2 px-3 m-4 rounded-full bg-emerald-50 cursor-pointer transition-transform duration-200 transform hover:-translate-y-1 hover:scale-102 hover:shadow-md hover:bg-emerald-100">Countries</div>
-                        <div @click="loadDiscover('Ingredients')" class="p-2 px-3 m-4 rounded-full bg-emerald-50 cursor-pointer transition-transform duration-200 transform hover:-translate-y-1 hover:scale-102 hover:shadow-md hover:bg-emerald-100">Ingredients</div>
-                    </div>
+                <div class="flex rounded-xl gap-8 border-2 p-6 bg-[var(--color-primary)]">
+                    <DiscoverTabs
+                        class="mt-12"
+                        :active-tab="activeDiscover"
+                        @select="loadDiscover"
+                    />
                     <div class="flex-1">
-                        <p class="text-xl text-[var(--color-primary)] font-semibold">Discover meals</p>
+                        <div>
+                            <p class="text-3xl text-white font-semibold mb-6">Discover By</p>
+                        </div>
+                        
                         <div class="max-h-[500px] overflow-y-auto">
                             <List-item :key="index" v-for="item in discoverItems" :item="item" />
                         </div>
@@ -60,11 +66,11 @@
 
 <script setup>
 import { Search as SearchIcon } from '@lucide/vue';
-import { Heart, Shuffle } from '@lucide/vue';
+import { Heart, Shuffle, ChevronDown } from '@lucide/vue';
 
 const mealOTD = ref({})
 const categoryOTD = ref({})
-const name = ref(null)
+const name = ref("You")
 const { data: randomMealData, refresh: refreshRandomMeal } = await useFetch('https://www.themealdb.com/api/json/v1/1/random.php')
 
 const randomMeal = computed(() => randomMealData.value?.meals?.[0])
@@ -129,6 +135,7 @@ const initCategoryLogic = async () => {
 //fetch discover items based on  categories, countries, ingredients
 
 const discoverItems = ref([]);
+const activeDiscover = ref('Categories');
 
 const endpoints = {
     Categories: "https://www.themealdb.com/api/json/v1/1/list.php?c=list",
@@ -136,6 +143,7 @@ const endpoints = {
     Ingredients: "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
 }
 const loadDiscover = async (type) => {
+    activeDiscover.value = type;
     const url = endpoints[type];
     if (!url) return;
     const data = await $fetch(url);
@@ -150,7 +158,7 @@ const loadDiscover = async (type) => {
 
 
 onMounted(() => {
-    name.value = localStorage.getItem('name');
+    name.value = localStorage.getItem('name') || "You";
     initMealLogic();
     initCategoryLogic();
     loadDiscover('Categories')

@@ -1,11 +1,11 @@
 <template>
     <div>
-        <p class="p-4 border-b">{{item}}</p>
+        <p class="text-white p-4 border-b cursor-pointer hover:bg-[var(--color-primary-light)] rounded-xl">{{item}}</p>
     </div>
 </template>
 
 <script setup>
-    const props = defineProps({
+    defineProps({
         item: String
     })
 </script>
