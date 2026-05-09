@@ -3,7 +3,7 @@
         <header class="flex justify-between px-8 items-center p-2 border-b border-[var(--color-primary-light)]">
             <NuxtLink to="/"><h1 class="text-[var(--color-primary)] text-2xl">Chow</h1></NuxtLink>
             <div class="flex text-[var(--color-primary)] font-semibold opacity-80">
-                <p class="text-lg ">Hey, {{ name }}</p>
+                <p class="text-lg ml-[10rem]">Hey, {{ name }}</p>
                 <ChevronDown />
             </div>
             <div class="relative group">
