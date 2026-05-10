@@ -2,23 +2,28 @@
     <div>
         <header class="flex justify-between px-8 items-center p-2 border-b border-[var(--color-primary-light)]">
             <NuxtLink to="/"><h1 class="text-[var(--color-primary)] text-2xl">Chow</h1></NuxtLink>
-            <div class="flex text-[var(--color-primary)] font-semibold opacity-80">
-                <p class="text-lg ml-[10rem]">Hey, {{ name }}</p>
-                <ChevronDown />
+            <div @click="userOptions = !userOptions" :class="['relative flex text-[var(--color-primary)] font-semibold ml-[10rem] p-2 rounded-xl cursor-pointer', { 'hover:bg-green-100': !userOptions }]">
+                <p  class="text-lg">Hey, {{ name }}</p>
+                <div v-if="userOptions" role="menu" aria-label="User menu" @keydown.esc="userOptions = false" class="absolute top-16 -left-11 z-50 min-w-[12rem] w-48 bg-[var(--color-primary)] text-white rounded-lg py-2 shadow-xl ring-1 ring-black/20 transition-opacity duration-150 text-sm">
+                    <div role="menuitem" tabindex="0" class="h-12 flex items-center px-4 hover:bg-emerald-300 focus:bg-emerald-300 focus:outline-none">Saved recipes</div>
+                    <div role="menuitem" tabindex="0" class="h-12 flex items-center px-4 hover:bg-emerald-300 focus:bg-emerald-300 focus:outline-none">About</div>
+                    <div role="menuitem" tabindex="0" @click="logout" class="h-12 flex items-center px-4 hover:bg-emerald-300 focus:bg-emerald-300 focus:outline-none">Logout</div>
+                </div>
+                <ChevronDown  :class="['ml-2 mt-1 transition-transform duration-500', {'rotate-180': userOptions}]" />
             </div>
             <div class="relative group">
                 <SearchIcon class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400 group-focus-within:text-[var(--color-primary)] transition-colors duration-200" />
-                <input class="w-80 rounded-full bg-gray-50 border border-gray-200 py-2.5 pl-12 pr-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[var(--color-primary)] transition-all duration-200" type="text" placeholder="search for a meal">
+                <input class="w-80 rounded-xl bg-gray-50 border border-gray-200 py-2.5 pl-12 pr-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[var(--color-primary)] transition-all duration-200" type="text" placeholder="search for a meal">
             </div>
         </header>
         <div class="grid grid-cols-4 gap-4 p-4 pt-8">
             <div
-                class="relative cursor-pointer col-span-2 h-[86dvh] bg-cover bg-center rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-[0.2deg] transition-all hover:shadow-[var(--color-btn-hover)] duration-500"
+                class="relative cursor-pointer col-span-2 h-[86dvh] bg-cover bg-center rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-[0.3deg] transition-all hover:shadow-[var(--color-btn-hover)] duration-500"
                 :style="{ backgroundImage: `url('${randomMeal?.strMealThumb}')` }"
             >
                 <div class="absolute inset-0 bg-black/45"></div>
                 <div class="relative flex justify-between z-10 p-8">
-                    <p class="text-white text-2xl pb-2">{{ randomMeal?.strMeal }}</p>
+                    <p class="text-white text-4xl font-bold pb-2">{{ randomMeal?.strMeal }}</p>
                     <Heart class="text-white size-10 p-2 rounded-full backdrop-blur-lg bg-[#86a384]/50" />
                 </div>
                 <div class="absolute flex items-center bottom-4 left-4 z-10">
@@ -71,6 +76,7 @@ import { Heart, Shuffle, ChevronDown } from '@lucide/vue';
 const mealOTD = ref({})
 const categoryOTD = ref({})
 const name = ref("You")
+const userOptions = ref(false);
 const { data: randomMealData, refresh: refreshRandomMeal } = await useFetch('https://www.themealdb.com/api/json/v1/1/random.php')
 
 const randomMeal = computed(() => randomMealData.value?.meals?.[0])
@@ -164,7 +170,12 @@ onMounted(() => {
     loadDiscover('Categories')
 })
 
-
+const logout = () => {
+    if (import.meta.client) {
+        localStorage.clear();
+    }
+    navigateTo('/');
+}
 
 </script>
 
