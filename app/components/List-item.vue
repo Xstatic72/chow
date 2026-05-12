@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <p class="text-white p-4 border-b cursor-pointer hover:bg-[var(--color-primary-light)] rounded-xl">{{item}}</p>
-    </div>
+    <span>
+        <p class="text-white px-4 py-1.5 border-2 cursor-pointer hover:bg-[var(--color-primary-light)] rounded-full">{{item}}</p>
+    </span>
 </template>
 
 <script setup>

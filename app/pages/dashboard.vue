@@ -37,7 +37,7 @@
                 </div>
                 <div class="absolute flex items-center bottom-4 left-4 z-10">
                     <p class="text-white text-xl p-6">Try this! or</p>
-                    <button @click="getRandomMeal" class="flex items-center p-4 bg-transparent hover:bg-[var(--color-btn-hover)] text-white border-2 border-[var(--color-btn-hover)] rounded-xl transition-colors duration-300">Something else <Shuffle class="ml-1" /></button>
+                    <button @click="getRandomMeal" class="flex items-center p-4 bg-transparent hover:bg-[var(--color-btn-hover)] text-white font-bold text-xl border-2 border-[var(--color-btn-hover)] rounded-xl transition-colors duration-300">Something else <Shuffle class="ml-1" /></button>
                 </div>
             </div>
             <div class="col-span-2 grid grid-rows-[1fr_2fr] gap-4 min-h-0">
@@ -66,7 +66,7 @@
                             />
                         </div>
                         
-                        <div class="flex-1 min-h-0 overflow-y-auto">
+                        <div class="flex flex-wrap mt-2 gap-3 min-h-0 overflow-y-auto">
                             <List-item :key="index" v-for="(item, index) in discoverItems" :item="item" />
                         </div>
                     </div>

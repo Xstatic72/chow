@@ -46,6 +46,19 @@
     --color-primary-light: #20d55ccd;
 }
 
+.hide-scrollbar {
+  /* For Firefox */
+  scrollbar-width: none;
+  
+  /* For Internet Explorer and Edge */
+  -ms-overflow-style: none;
+}
+
+/* For Chrome, Safari, and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 h1 {
     font-family: Matemasie, sans-serif;
 }
