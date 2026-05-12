@@ -6,11 +6,11 @@
                 <p  class="text-lg">Hey, {{ name }}</p>
                 <Transition
                 enter-active-class="transition duration-500 ease-out"
-                enter-from-class="opacity-0 scale-95"
-                enter-to-class="opacity-100 scale-100"
+                enter-from-class="-translate-y-10 opacity-0 scale-95"
+                enter-to-class="opacity-100 scale-100 translate-y-0"
                 leave-active-class="transition duration-150 ease-in"
-                leave-from-class="opacity-100 scale-100"
-                leave-to-class="opacity-0 scale-95"
+                leave-from-class="opacity-100 scale-100 translate-y-0"
+                leave-to-class="opacity-0 scale-95 -translate-y-5"
                 >
                 <div v-if="isUserOptionsOpen" role="menu" aria-label="User menu" @keydown.esc="isUserOptionsOpen = false" class="absolute top-16 -left-11 z-50 min-w-[12rem] w-48 bg-[var(--color-primary)] text-white rounded-lg py-2 shadow-xl text-sm">
                     <div role="menuitem" tabindex="0" class="h-12 flex items-center px-4 hover:bg-emerald-300 focus:bg-emerald-300 focus:outline-none">Saved recipes</div>

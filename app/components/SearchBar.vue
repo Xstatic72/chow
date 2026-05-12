@@ -10,7 +10,10 @@
             type="text"
             placeholder="search for a meal"
         />
-        <div v-show ="isSearchActive" class="absolute z-[50] bg-[var(--color-primary)] rounded-xl opacity-80 overflow-y-auto top-14 h-[200px] max-h-[350px] w-full flex justify-center items-center text-white">
+        <div 
+        v-show="isSearchActive" 
+        @mousedown.prevent
+        class="absolute z-[50] backdrop-blur-md bg-green-500/60 rounded-xl overflow-y-auto top-14 h-[200px] max-h-[350px] w-full flex justify-center items-center text-white">
             type to search
         </div>
     </div>
