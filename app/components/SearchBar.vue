@@ -4,11 +4,15 @@
         <input
             v-model="searchQuery"
             @input="debounce(searchQuery)"
+            @focus="isSearchActive = true"
+            @blur="isSearchActive = false"  
             class="w-80 rounded-xl bg-gray-50 border border-gray-200 py-2.5 pl-12 pr-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[var(--color-primary)] transition-all duration-200"
             type="text"
             placeholder="search for a meal"
         />
-        <div class="absolute z-[50] bg-[var(--color-primary)] rounded-xl opacity-80 overflow-y-auto top-14 h-[200px] max-h-[350px] w-full"></div>
+        <div v-show ="isSearchActive" class="absolute z-[50] bg-[var(--color-primary)] rounded-xl opacity-80 overflow-y-auto top-14 h-[200px] max-h-[350px] w-full flex justify-center items-center text-white">
+            type to search
+        </div>
     </div>
 </template>
 
@@ -26,6 +30,8 @@ const debounce = (func, delay = 400) => {
             func(...args);
         }, delay);
     }; 
+
+
 }
 </script>
 
