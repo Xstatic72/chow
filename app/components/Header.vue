@@ -26,18 +26,18 @@
 <script setup>
 import { ChevronDown } from '@lucide/vue';
 
-const name = ref("You")
+const name = ref('You')
 const isUserOptionsOpen = ref(false);
 
 onMounted(() => {
-    name.value = localStorage.getItem('name') || "You";
+    name.value = localStorage.getItem('name') || 'You';
 })
 
 const logout = () => {
     if (import.meta.client) {
-        localStorage.clear();
+        localStorage.clear()
     }
-    navigateTo('/');
+    navigateTo('/')
 }
 </script>
 
