@@ -10,18 +10,21 @@
                 <img :src="meal.strMealThumb" :alt="meal.strMeal" class="w-full max-w-md rounded-lg mb-4" />
             </div>
             <div class="grid grid-cols-5 gap-8 m-10 lg:ml-32">
-                <Ingredient v-for="(ingr, index) in ingredients" :key="index" :name="ingr.name" :image="`https://www.themealdb.com/images/ingredients/${encodeURIComponent(ingr.name)}.png`" />
+                <Ingredient v-for="(ingr, index) in ingredients" :key="index" :name="ingr.display" :image="`https://www.themealdb.com/images/ingredients/${encodeURIComponent(ingr.name)}.png`" />
             </div>
          </div>
         
        
 
-        
-        <p>{{ meal.strInstructions }}</p>
+        <div class="flex">
+            <div>
+                <iframe v-if="meal.strYoutube" :src="meal.strYoutube.replace('watch?v=', 'embed/')" frameborder="0" allowfullscreen class="w-[350px] h-64 mt-4 rounded-lg"></iframe>
+            </div>
+            <p class="ml-4 p-6">{{ meal.strInstructions }}</p>
+            
+        </div>
     
-     <div>
-        <iframe v-if="meal.strYoutube" :src="meal.strYoutube.replace('watch?v=', 'embed/')" frameborder="0" allowfullscreen class="w-[350px] h-64 mt-4 rounded-lg"></iframe>
-     </div>
+     
      </div>
 </template>
 
@@ -45,10 +48,10 @@ const ingredients = computed(() => {
     if (!meal.value) return []
     const ingr = []
     for (let i = 1; i <= 20; i++) {
-        const ingredient = meal.value[`strIngredient${i}`]
-        const measure = meal.value[`strMeasure${i}`]
+        const ingredient = (meal.value[`strIngredient${i}`] || '').trim()
+        const measure = (meal.value[`strMeasure${i}`] || '').trim()
         if (ingredient) ingr.push({
-            display: `${measure} ${ingredient}`,
+            display: `${measure} ${ingredient}`.trim(),
             name: ingredient
         })
     }
