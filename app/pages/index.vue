@@ -66,6 +66,29 @@ p {
     font-family: Exo, sans-serif;
 }
 
+.scrollbar-thin {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255,255,255,0.4) transparent;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+        background-color: rgba(255,255,255,0.4);
+        border-radius: 999px;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(255,255,255,0.7);
+    }
+
+
 
 .btn {
         background-color: var(--color-primary);

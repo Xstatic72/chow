@@ -4,12 +4,13 @@
             <div
                 class="relative cursor-pointer col-span-2 h-[86dvh] bg-cover bg-center rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-[0.3deg] transition-all hover:shadow-green-500/50 duration-500"
                 :style="{ backgroundImage: `url('${randomMeal?.strMealThumb}')` }"
+                @click="randomMeal && navigateTo(`/dashboard/meal/${mealSlug(randomMeal)}`)"
             >
                 <div class="absolute inset-0 bg-black/45"></div>
                 <div class="relative flex justify-between z-10 p-8">
                     <p class="text-white max-w-md text-4xl font-bold pb-2">{{ randomMeal?.strMeal }}</p>
                     <Heart 
-                    @click="toggleSave(randomMeal); $forceUpdate()"
+                    @click.stop="toggleSave(randomMeal); $forceUpdate()"
                      :class="['cursor-pointer transition-transform duration-200', {'fill-green-200 scale-110' : isSaved(randomMeal)}]"
                     class="text-white size-10 p-2 rounded-full backdrop-blur-lg bg-[#86a384]/50 hover:bg-green-300/50" />
                 </div>
@@ -20,12 +21,13 @@
             </div>
             <div class="col-span-2 grid grid-rows-[1fr_2fr] gap-4 min-h-0">
                 <div class="row-span-1 grid grid-cols-2 gap-4">
-                    <Card
-                        v-if="mealOTD?.strMeal"
-                        title="Meal of the Day"
-                        :image="mealOTD?.strMealThumb"
-                        :name="mealOTD?.strMeal"
-                    />
+                    <div v-if="mealOTD?.strMeal" class="cursor-pointer" @click="navigateTo(`/dashboard/meal/${mealSlug(mealOTD)}`)">
+                        <Card
+                            title="Meal of the Day"
+                            :image="mealOTD?.strMealThumb"
+                            :name="mealOTD?.strMeal"
+                        />
+                    </div>
                     <Card
                         v-if="categoryOTD?.strCategory"
                         title="Category of the Day"
@@ -44,7 +46,7 @@
                             />
                         </div>
                         
-                        <div class="flex flex-wrap mt-2 gap-3 min-h-0 overflow-y-auto">
+                        <div class="flex flex-wrap mt-2 gap-3 min-h-0 overflow-y-auto scrollbar-thin">
                             <List-item :key="index" v-for="(item, index) in discoverItems" :item="item" />
                         </div>
                     </div>

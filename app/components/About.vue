@@ -14,7 +14,7 @@
             @click.self="$emit('close')"
         >
         <div class="backdrop-blur-md bg-green-500/60 text-white rounded-xl p-8 max-w-md text-xl w-full">
-             <button @click="$emit('close')" class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors duration-200">
+             <button @click="$emit('close')" class="absolute top-4 right-4 text-white hover:text-gray-300 hover:rotate-90 transition-all duration-200">
                 <X class="size-6" />
             </button>
             <h1 class="text-2xl pb-4">Chow</h1>

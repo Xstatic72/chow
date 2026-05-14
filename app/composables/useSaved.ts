@@ -1,11 +1,11 @@
 export const useSaved = () => {
-    const savedItems = useState('saved', () => {
-        if (import.meta.client) {
-            const saved = localStorage.getItem('saved');
-            return saved ? JSON.parse(saved) : [];
-        }
-        return [];
-    })
+    const savedItems = useState('saved', () => [])
+
+    onMounted(() => {
+    const saved = localStorage.getItem('saved');
+    if (saved) savedItems.value = JSON.parse(saved);
+    });
+
 
     const toggleSave = (meal) => {
         const index = savedItems.value.findIndex(item => item.idMeal === meal.idMeal);
