@@ -10,7 +10,7 @@
 
             </div>
         </div>
-        <div class="w-full rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-1 transition-all hover:shadow-[var(--color-btn-hover)] duration-500">
+        <div class="w-full rounded-xl overflow-hidden hover:translate-y-[-8px] hover:shadow-lg hover:-rotate-1 transition-all hover:shadow hover:shadow-green-500/40 duration-500">
             <img class="object-contain" src="\assets\images\lily-banse--YHSwy6uqvk-unsplash.jpg" alt="Delicious Food">
         </div>
     </div>
