@@ -8,11 +8,25 @@
             >
                 <div class="absolute inset-0 bg-black/45"></div>
                 <div class="relative flex justify-between z-10 p-8">
-                    <p class="text-white max-w-md text-4xl font-bold pb-2">{{ randomMeal?.strMeal }}</p>
+                    <div>
+                        <p class="text-white max-w-md text-4xl font-bold pb-2">{{ randomMeal?.strMeal }}</p>
+                        <div class="flex gap-4">
+                            <div class="flex items-center gap-2">
+                            <span class="px-3 py-1 rounded-full backdrop-blur-sm text-white text-xs font-medium cursor-pointer bg-green-200/20 hover:bg-[var(--color-primary)] hover:text-white transition-colors duration-200">
+                                {{ randomMeal?.strCategory }}
+                            </span>
+                            <span class="px-3 py-1 rounded-full backdrop-blur-sm text-white text-xs font-medium cursor-pointer bg-green-200/20 hover:bg-[var(--color-primary)] hover:text-white transition-colors duration-200">
+                                {{ randomMeal?.strArea }}
+                            </span>
+                        </div>
+            
+                        </div>
+                        
+                    </div>
                     <Heart 
-                    @click.stop="toggleSave(randomMeal); $forceUpdate()"
-                     :class="['cursor-pointer transition-transform duration-200', {'fill-green-200 scale-110' : isSaved(randomMeal)}]"
-                    class="text-white size-10 p-2 rounded-full backdrop-blur-lg bg-[#86a384]/50 hover:bg-green-300/50" />
+                        @click.stop="toggleSave(randomMeal); $forceUpdate()"
+                        :class="['cursor-pointer transition-transform duration-200', {'fill-green-200 scale-110' : isSaved(randomMeal)}]"
+                        class="text-white size-10 p-2 rounded-full backdrop-blur-lg bg-[#86a384]/50 hover:bg-green-300/50" />
                 </div>
                 <div class="absolute flex items-center bottom-4 left-4 z-10">
                     <p class="text-white text-xl p-6">Try this! or</p>

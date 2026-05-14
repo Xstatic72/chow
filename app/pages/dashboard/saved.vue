@@ -1,5 +1,5 @@
 <template>
-    <div class="p-8">
+    <div class="p-8 px-16">
         <button @click="navigateTo('/dashboard')" class="mb-4 text-[var(--color-primary)] hover:underline">
             <ArrowLeft class="inline-block mr-1 text-lg" /> Home
         </button>
@@ -13,7 +13,7 @@
             </NuxtLink>
         </div>
 
-        <div v-else class="relative grid grid-cols-5 gap-4">
+        <div v-else class="relative grid grid-cols-5 gap-6">
                 <div v-for="(meal, index) in savedItems" :key="index" class="cursor-pointer" @click="navigateTo(`/dashboard/meal/${mealSlug(meal)}`)">
                     <div class="relative w-[240px] h-[200px] bg-cover p-4 bg-center content-end text-left rounded-xl hover:-translate-y-2 hover:-rotate-1 transition-all hover:shadow-lg hover:shadow-green-500/40 duration-500" :style="{ backgroundImage: `url('${meal.strMealThumb}')` }">
                         <div class="absolute inset-0 bg-black bg-opacity-30 rounded-xl"></div>
