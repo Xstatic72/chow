@@ -1,12 +1,12 @@
 <template>
     <div class="relative group">
-        <SearchIcon class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400 group-focus-within:text-[var(--color-primary)] transition-colors duration-200" />
+        <SearchIcon class="lg:absolute left-4 top-1/2 h-5 w-5 lg:-translate-y-1/2 text-gray-400 group-focus-within:text-[var(--color-primary)] transition-colors duration-200" />
         <input
             v-model="searchQuery"
             @input="debouncedSearch(searchQuery)"
             @focus="isSearchActive = true"
             @blur="isSearchActive = false"  
-            class="w-80 rounded-xl bg-gray-50 border border-gray-200 py-2.5 pl-12 pr-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[var(--color-primary)] transition-all duration-200"
+            class="w-80 rounded-xl bg-gray-50 border hidden md:block border-gray-200 py-2.5 pl-12 pr-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[var(--color-primary)] transition-all duration-200"
             type="text"
             placeholder="search for a meal"
         />

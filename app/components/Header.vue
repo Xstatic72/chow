@@ -1,8 +1,8 @@
 <template>
-    <header class="flex justify-between px-8 items-center p-2 border-b border-[var(--color-primary-light)]">
-        <NuxtLink to="/"><h1 class="text-[var(--color-primary)] text-2xl">Chow</h1></NuxtLink>
-        <div @click="isUserOptionsOpen = !isUserOptionsOpen" :class="['relative flex text-[var(--color-primary)] font-semibold ml-[10rem] p-2 rounded-xl cursor-pointer', { 'hover:bg-green-100': !isUserOptionsOpen }]">
-            <p  class="text-lg">Hey, {{ name }}</p>
+    <header class="flex justify-between md:px-8 items-center p-2 border-b border-[var(--color-primary-light)]">
+        <NuxtLink to="/"><h1 class="text-[var(--color-primary)] text-lg md:text-2xl">Chow</h1></NuxtLink>
+        <div @click="isUserOptionsOpen = !isUserOptionsOpen" :class="['relative flex text-[var(--color-primary)] font-semibold lg:ml-[10rem] p-2 rounded-xl cursor-pointer', { 'hover:bg-green-100': !isUserOptionsOpen }]">
+            <p  class=" text-md md:text-lg whitespace-nowrap">Hey, {{ name }}</p>
             <Transition
             enter-active-class="transition duration-500 ease-out"
             enter-from-class="-translate-y-10 opacity-0 scale-95"

@@ -13,7 +13,7 @@
             </NuxtLink>
         </div>
 
-        <div v-else class="relative grid grid-cols-4 gap-6">
+        <div v-else class="relative grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div v-for="(meal, index) in savedItems" :key="index" class="cursor-pointer hover:-translate-y-0.5 transition-transform duration-700" @click="navigateTo(`/dashboard/meal/${mealSlug(meal)}`)">
                     <div class="relative">
                         <div class="flex">

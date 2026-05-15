@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="grid grid-cols-4 h-[90dvh] gap-4 p-4 pt-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 h-[90dvh] gap-4 p-4 pt-8">
             <div
-                class="relative cursor-pointer col-span-2 h-[86dvh] bg-cover bg-center rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-[0.3deg] transition-all hover:shadow-green-500/50 duration-500"
+                class="relative cursor-pointer   md:col-span-2 min-h-[350px] md:h-[86dvh] bg-cover bg-center rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-[0.3deg] transition-all hover:shadow-green-500/50 duration-500"
                 :style="{ backgroundImage: `url('${randomMeal?.strMealThumb}')` }"
                 @click="randomMeal && navigateTo(`/dashboard/meal/${mealSlug(randomMeal)}`)"
             >
