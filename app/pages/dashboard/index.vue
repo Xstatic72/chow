@@ -12,12 +12,8 @@
                         <p class="text-white max-w-md text-4xl font-bold pb-2">{{ randomMeal?.strMeal }}</p>
                         <div class="flex gap-4">
                             <div class="flex items-center gap-2">
-                            <span class="px-3 py-1 rounded-full backdrop-blur-sm text-white text-xs font-medium cursor-pointer bg-green-200/20 hover:bg-[var(--color-primary)] hover:text-white transition-colors duration-200">
-                                {{ randomMeal?.strCategory }}
-                            </span>
-                            <span class="px-3 py-1 rounded-full backdrop-blur-sm text-white text-xs font-medium cursor-pointer bg-green-200/20 hover:bg-[var(--color-primary)] hover:text-white transition-colors duration-200">
-                                {{ randomMeal?.strArea }}
-                            </span>
+                            <PillLink :name="randomMeal?.strCategory" />
+                            <PillLink :name="randomMeal?.strArea" />
                         </div>
             
                         </div>
@@ -30,7 +26,7 @@
                 </div>
                 <div class="absolute flex items-center bottom-4 left-4 z-10">
                     <p class="text-white text-xl p-6">Try this! or</p>
-                    <button @click="getRandomMeal" class="flex items-center p-4 bg-transparent hover:bg-[var(--color-btn-hover)] text-white font-bold text-xl border-2 border-[var(--color-btn-hover)] rounded-xl transition-colors duration-300">Something else <Shuffle class="ml-1" /></button>
+                    <button @click.stop="getRandomMeal" class="flex items-center p-4 bg-transparent hover:bg-[var(--color-btn-hover)] text-white font-bold text-xl border-2 border-[var(--color-btn-hover)] rounded-xl transition-colors duration-300">Something else <Shuffle class="ml-1" /></button>
                 </div>
             </div>
             <div class="col-span-2 grid grid-rows-[1fr_2fr] gap-4 min-h-0">

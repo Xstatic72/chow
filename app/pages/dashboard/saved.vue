@@ -13,17 +13,25 @@
             </NuxtLink>
         </div>
 
-        <div v-else class="relative grid grid-cols-5 gap-6">
-                <div v-for="(meal, index) in savedItems" :key="index" class="cursor-pointer" @click="navigateTo(`/dashboard/meal/${mealSlug(meal)}`)">
-                    <div class="relative w-[240px] h-[200px] bg-cover p-4 bg-center content-end text-left rounded-xl hover:-translate-y-2 hover:-rotate-1 transition-all hover:shadow-lg hover:shadow-green-500/40 duration-500" :style="{ backgroundImage: `url('${meal.strMealThumb}')` }">
-                        <div class="absolute inset-0 bg-black bg-opacity-30 rounded-xl"></div>
-                        <div class="relative z-10">
-                            <p class="text-white text-md font-bold max-w-sm pb-2">{{ meal.strMeal }}</p>
+        <div v-else class="relative grid grid-cols-4 gap-6">
+                <div v-for="(meal, index) in savedItems" :key="index" class="cursor-pointer hover:-translate-y-0.5 transition-transform duration-700" @click="navigateTo(`/dashboard/meal/${mealSlug(meal)}`)">
+                    <div class="relative">
+                        <div class="flex">
+                            <img :src="meal.strMealThumb" :alt="meal.strMeal" class="rounded-xl size-24">
+                            <div class="gap-2">
+                                        <PillLink :name="meal.strCategory" class="bg-green-600/90 block m-3 text-[0.625rem]"  />
+                                        <PillLink :name="meal.strArea" class="bg-green-600/90 block m-3 text-[0.625rem]"  />
+                            </div>
                         </div>
-                        <button @click.stop="toggleSave(meal); $forceUpdate()" class="absolute top-2 right-2 text-white size-10 p-2 rounded-full backdrop-blur-lg bg-[#86a384]/50 hover:bg-green-300/50 transition-colors duration-300">
+
+                        <div class="relative z-10">
+                            <p class="text-md font-bold max-w-sm pb-2">{{ meal.strMeal }}</p>                    
+                        </div>
+                        <button @click.stop="toggleSave(meal); $forceUpdate()" class="absolute top-2 right-10 text-white size-10 p-2 rounded-full backdrop-blur-lg bg-[#86a384]/50 hover:bg-green-300/50 transition-colors duration-300">
                             <Trash2 :class="['cursor-pointer text-red-500 transition-transform duration-200', {'scale-110' : isSaved(meal)}]" />
                         </button>
                     </div>
+                        
                 </div>
         </div>
     </div>

@@ -18,6 +18,7 @@
                 <div 
                 v-for="meal in searchResults" 
                 :key="meal.idMeal" 
+                @click="goToMeal(meal)"
                 class="flex items-center px-3 py-3.5 border-b border-gray-300 hover:bg-white/20 cursor-pointer transition-all duration-200 group">
                  {{ meal.strMeal }} 
                 </div>
@@ -31,6 +32,7 @@
 
 <script setup>
 import { Search as SearchIcon } from '@lucide/vue';
+import { mealSlug } from '~/utils/slug';
 
 const searchQuery = ref('');
 const isSearchActive = ref(false);
@@ -62,6 +64,11 @@ const handleSearch = async (query) => {
 }
 
 const debouncedSearch = debounce(handleSearch, 300)
+
+const goToMeal = (meal) => {
+    navigateTo(`/dashboard/meal/${mealSlug(meal)}`)
+    isSearchActive.value = false
+}
 
 </script>
 
