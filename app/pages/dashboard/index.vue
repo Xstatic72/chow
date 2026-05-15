@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="col-span-2 grid grid-rows-[auto_1fr] gap-4 min-h-0 mt-4 lg:mt-0">
-                <div class="row-span-1 grid grid-cols-[auto_auto] justify-start gap-7">
+                <div class="row-span-1 grid grid-cols-[auto_auto] justify-start gap-4 md:gap-8">
                     <div v-if="mealOTD?.strMeal" class="cursor-pointer " @click="navigateTo(`/dashboard/meal/${mealSlug(mealOTD)}`)">
                         <Card
                             title="Meal of the Day"
