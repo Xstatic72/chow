@@ -25,7 +25,7 @@
         <iframe :src="meal.strYoutube.replace('watch?v=', 'embed/')" frameborder="0" allowfullscreen class="w-full aspect-video rounded-lg"></iframe>
       </div>
       
-      <div class="flex-1 space-y-4 p-6 bg-gray-50 rounded-lg">
+      <div class="flex-1 space-y-4 p-6 bg-green-50/50 rounded-lg">
         <h2 class="text-xl font-semibold mb-2">Instructions</h2>
         <p v-for="(step, index) in formattedSteps" :key="index" class="text-gray-700 leading-relaxed">
           <strong class="text-[var(--color-primary)]">Step {{ index + 1 }}:</strong> {{ step }}

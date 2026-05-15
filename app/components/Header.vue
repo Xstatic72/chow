@@ -2,7 +2,7 @@
     <header class="flex justify-between md:px-8 items-center p-2 border-b border-[var(--color-primary-light)]">
         <NuxtLink to="/"><h1 class="text-[var(--color-primary)] text-lg md:text-2xl">Chow</h1></NuxtLink>
         <div @click="isUserOptionsOpen = !isUserOptionsOpen" :class="['relative flex text-[var(--color-primary)] font-semibold lg:ml-[10rem] p-2 rounded-xl cursor-pointer', { 'hover:bg-green-100': !isUserOptionsOpen }]">
-            <p  class=" text-md md:text-lg whitespace-nowrap">Hey, {{ name }}</p>
+            <p v-if="!isMobileExpanded" class=" text-md md:text-lg whitespace-nowrap">Hey, {{ name }}</p>
             <Transition
             enter-active-class="transition duration-500 ease-out"
             enter-from-class="-translate-y-10 opacity-0 scale-95"
@@ -17,7 +17,7 @@
                 <NuxtLink role="menuitem" tabindex="0" @click="logout" class="h-12 flex items-center px-4 hover:bg-emerald-300 focus:bg-emerald-300 focus:outline-none"><LogOut class="mr-2 h-5 w-5" />Logout</NuxtLink>
             </div>
             </Transition>
-            <ChevronDown  :class="['ml-2 mt-1 transition-transform duration-500', {'rotate-180': isUserOptionsOpen}]" />
+            <ChevronDown v-if="!isMobileExpanded"  :class="['ml-2 mt-1 transition-transform duration-500', {'rotate-180': isUserOptionsOpen}]" />
         </div>
         <Teleport to="body">
             <About v-if="isAboutOpen" @close="isAboutOpen=false" />
@@ -30,6 +30,7 @@
 import { ChevronDown, Heart, LogOut, Info } from '@lucide/vue';
 
 const name = ref('You')
+const isMobileExpanded = useState('mobileSearchExpanded', () => false)
 const isUserOptionsOpen = ref(false)
 const isAboutOpen = ref(false)
 
