@@ -38,12 +38,13 @@
                             :name="mealOTD?.strMeal"
                         />
                     </div>
-                    <Card
-                        v-if="categoryOTD?.strCategory"
-                        title="Category of the Day"
-                        :image="categoryOTD?.strCategoryThumb"
-                        :name="categoryOTD?.strCategory"
-                    />
+                    <div v-if="categoryOTD?.strCategory" class="cursor-pointer" @click="navigateTo(`/dashboard/discover/${categoryOTD.strCategory}?type=category`)">
+                        <Card
+                            title="Category of the Day"
+                            :image="categoryOTD?.strCategoryThumb"
+                            :name="categoryOTD?.strCategory"
+                        />
+                    </div>
                 </div>
 
                 <div class="row-span-1 min-h-0 flex rounded-xl gap-8 border-2 p-6 bg-[var(--color-primary)]">

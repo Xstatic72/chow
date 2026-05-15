@@ -19,8 +19,8 @@
                         <div class="flex">
                             <img :src="meal.strMealThumb" :alt="meal.strMeal" class="rounded-xl size-24">
                             <div class="gap-2">
-                                        <PillLink :name="meal.strCategory" class="bg-green-600/90 block m-3 text-[0.625rem]"  />
-                                        <PillLink :name="meal.strArea" class="bg-green-600/90 block m-3 text-[0.625rem]"  />
+                                        <PillLink :link="`/dashboard/discover/${meal.strCategory}?type=category`" :name="meal.strCategory" class="bg-green-600/90 block m-3 text-[0.625rem]"  />
+                                        <PillLink :link="`/dashboard/discover/${meal.strArea}?type=country`" :name="meal.strArea" class="bg-green-600/90 block m-3 text-[0.625rem]"  />
                             </div>
                         </div>
 
