@@ -1,16 +1,16 @@
 <template>
-  <div class="p-8">
+  <div class="p-4 md:p-8">
     <button @click="navigateTo('/dashboard')" class="mb-4 text-[var(--color-primary)] hover:underline">
       <ArrowLeft class="inline-block mr-1 text-lg" /> Home
     </button>
     
     <h1 class="text-2xl font-bold text-[var(--color-primary)] max-w-lg mb-6">{{ meal.strMeal }}</h1>
     
-    <div class="flex">
-      <div>
-        <img :src="meal.strMealThumb" :alt="meal.strMeal" class="w-full max-w-md rounded-lg mb-4" />
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
+      <div class="w-full lg:max-w-md">
+        <img :src="meal.strMealThumb" :alt="meal.strMeal" class="w-full rounded-lg mb-4 object-cover" />
       </div>
-      <div class="grid grid-cols-5 gap-8 m-10 lg:ml-32">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8 lg:ml-8">
         <Ingredient 
           v-for="(ingr, index) in ingredients" 
           :key="index" 
@@ -21,8 +21,8 @@
     </div>
     
     <div class="flex flex-col md:flex-row gap-6 mt-4">
-      <div v-if="meal.strYoutube">
-        <iframe :src="meal.strYoutube.replace('watch?v=', 'embed/')" frameborder="0" allowfullscreen class="w-[350px] h-64 rounded-lg"></iframe>
+      <div v-if="meal.strYoutube" class="w-full md:w-[350px]">
+        <iframe :src="meal.strYoutube.replace('watch?v=', 'embed/')" frameborder="0" allowfullscreen class="w-full aspect-video rounded-lg"></iframe>
       </div>
       
       <div class="flex-1 space-y-4 p-6 bg-gray-50 rounded-lg">

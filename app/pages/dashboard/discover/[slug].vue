@@ -1,12 +1,12 @@
 <template>
-  <div class="p-8">
-    <button @click="navigateTo('/dashboard')" class="mb-4 text-[var(--color-primary)] hover:underline">
+  <div class="p-4 md:p-8">
+    <button @click="navigateTo('/dashboard')" class="mb-4 hover:underline" :style="{ color: 'var(--color-primary)' }">
       <ArrowLeft class="inline-block mr-1 text-lg" /> Home
     </button>
 
-    <h1 class="text-3xl font-bold text-[var(--color-primary)] mb-6">{{ config.label }}: <span class="capitalize">{{ filterValue }}</span></h1>
+    <h1 class="text-2xl md:text-3xl font-bold mb-6" :style="{ color: 'var(--color-primary)' }">{{ config.label }}: <span class="capitalize">{{ filterValue }}</span></h1>
 
-    <div v-if="meals.length > 0" class="grid grid-cols-4 gap-6">
+    <div v-if="meals.length > 0" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       <div v-for="meal in meals" :key="meal.idMeal" class="cursor-pointer" @click="navigateTo(`/dashboard/meal/${mealSlug(meal)}`)">
         <img :src="meal.strMealThumb" :alt="meal.strMeal" class="w-full rounded-lg mb-2" />
         <p class="font-semibold">{{ meal.strMeal }}</p>
