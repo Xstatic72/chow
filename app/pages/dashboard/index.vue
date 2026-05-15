@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="grid grid-cols-1 lg:grid-cols-4 h-[90dvh] gap-4 p-4 pt-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 md:h-[90dvh] md:gap-4 p-2 md:p-4 mt-4">
             <div
                 class="relative cursor-pointer   md:col-span-2 min-h-[350px] md:h-[86dvh] bg-cover bg-center rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-[0.3deg] transition-all hover:shadow-green-500/50 duration-500"
                 :style="{ backgroundImage: `url('${randomMeal?.strMealThumb}')` }"
@@ -9,7 +9,7 @@
                 <div class="absolute inset-0 bg-black/45"></div>
                 <div class="relative flex justify-between z-10 p-8">
                     <div>
-                        <p class="text-white max-w-md text-4xl font-bold pb-2">{{ randomMeal?.strMeal }}</p>
+                        <p class="text-white max-w-md md:text-4xl font-bold pb-2">{{ randomMeal?.strMeal }}</p>
                         <div class="flex gap-4">
                             <div class="flex items-center gap-2">
                             <PillLink :name="randomMeal?.strCategory" />
@@ -26,19 +26,19 @@
                 </div>
                 <div class="absolute flex items-center bottom-4 left-4 z-10">
                     <p class="text-white text-xl p-6">Try this! or</p>
-                    <button @click.stop="getRandomMeal" class="flex items-center p-4 bg-transparent hover:bg-[var(--color-btn-hover)] text-white font-bold text-xl border-2 border-[var(--color-btn-hover)] rounded-xl transition-colors duration-300">Something else <Shuffle class="ml-1" /></button>
+                    <button @click.stop="getRandomMeal" class="flex items-center p-4 bg-transparent hover:bg-[var(--color-btn-hover)] text-white font-bold md:text-xl border-2 border-[var(--color-btn-hover)] rounded-xl transition-colors duration-300">Something else <Shuffle class="ml-1" /></button>
                 </div>
             </div>
-            <div class="col-span-2 grid grid-rows-[1fr_2fr] gap-4 min-h-0">
-                <div class="row-span-1 grid grid-cols-2 gap-4">
-                    <div v-if="mealOTD?.strMeal" class="cursor-pointer" @click="navigateTo(`/dashboard/meal/${mealSlug(mealOTD)}`)">
+            <div class="col-span-2 grid grid-rows-[auto_1fr] gap-4 min-h-0 mt-4 lg:mt-0">
+                <div class="row-span-1 grid grid-cols-[auto_auto] justify-start gap-8">
+                    <div v-if="mealOTD?.strMeal" class="cursor-pointer " @click="navigateTo(`/dashboard/meal/${mealSlug(mealOTD)}`)">
                         <Card
                             title="Meal of the Day"
                             :image="mealOTD?.strMealThumb"
                             :name="mealOTD?.strMeal"
                         />
                     </div>
-                    <div v-if="categoryOTD?.strCategory" class="cursor-pointer" @click="navigateTo(`/dashboard/discover/${categoryOTD.strCategory}?type=category`)">
+                    <div v-if="categoryOTD?.strCategory" class="cursor-pointer " @click="navigateTo(`/dashboard/discover/${categoryOTD.strCategory}?type=category`)">
                         <Card
                             title="Category of the Day"
                             :image="categoryOTD?.strCategoryThumb"
@@ -49,7 +49,7 @@
 
                 <div class="row-span-1 min-h-0 flex rounded-xl gap-8 border-2 p-6 bg-[var(--color-primary)]">
                     <div class="flex-1 flex flex-col min-h-0">
-                        <div class="flex items-center justify-between mb-4">
+                        <div class="md:flex items-center justify-between mb-4">
                             <p class="text-3xl text-white font-semibold">Discover By</p>
                             <DiscoverTabs
                             :active-tab="activeDiscover"
