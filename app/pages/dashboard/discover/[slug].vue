@@ -1,7 +1,7 @@
 <template>
   <div class="p-8">
     <button @click="navigateTo('/dashboard')" class="mb-4 text-[var(--color-primary)] hover:underline">
-      <ArrowLeft class="inline-block mr-1 text-lg" /> Back
+      <ArrowLeft class="inline-block mr-1 text-lg" /> Home
     </button>
 
     <h1 class="text-3xl font-bold text-[var(--color-primary)] mb-6">{{ config.label }}: <span class="capitalize">{{ filterValue }}</span></h1>
