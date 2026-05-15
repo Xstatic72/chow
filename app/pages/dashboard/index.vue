@@ -12,8 +12,8 @@
                         <p class="text-white max-w-xs md:max-w-md text-xl md:text-4xl font-bold pb-2">{{ randomMeal?.strMeal }}</p>
                         <div class="flex gap-4">
                             <div class="flex items-center gap-2">
-                            <PillLink :name="randomMeal?.strCategory" />
-                            <PillLink :name="randomMeal?.strArea" />
+                            <PillLink :link="`/dashboard/discover/${randomMeal?.strCategory}?type=category`" :name="randomMeal?.strCategory" />
+                            <PillLink :link="`/dashboard/discover/${randomMeal?.strArea}?type=country`" :name="randomMeal?.strArea" />
                         </div>
             
                         </div>
