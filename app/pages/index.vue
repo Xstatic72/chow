@@ -1,21 +1,21 @@
 <template>
-    <div class="h-[100dvh] flex items-center px-16">
-        <div class="grid grid-cols-2 gap-4">
-        <div class="flex flex-col gap-4 justify-center pr-8">
-            <h1 class="text-6xl mb-4 font-bold scale-y-[1.5]" style="color: var(--color-primary);">Welcome to Chow</h1>
-            <p>Find fun recipes for meals from around the world. Whether you're a seasoned chef or just starting your cooking journey, these recipes are your key to creating mouthwatering masterpieces in your very own kitchen.</p>
-            <div class="text-lg flex gap-4 mt-4">
-                <input v-model="name" class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]" type="text" placeholder="What's your name?">
-                <button :disabled="!name.trim()" @click="startExploring" class="btn transition-colors duration-300">Start exploring</button>
+    <div class="min-h-screen flex items-center px-6 md:px-16 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full items-center">
+            <div class="flex flex-col gap-4 justify-center pr-0 md:pr-8">
+                <h1 class="text-4xl md:text-6xl mb-4 font-bold" style="color: var(--color-primary);">Welcome to Chow</h1>
+                <p class="text-base md:text-lg text-gray-700">Find fun recipes for meals from around the world. Whether you're a seasoned chef or just starting your cooking journey, these recipes are your key to creating mouthwatering masterpieces in your very own kitchen.</p>
 
+                <div class="text-lg flex flex-col md:flex-row gap-4 mt-4">
+                    <input v-model="name" class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] w-full md:w-auto" type="text" placeholder="What's your name?">
+                    <button :disabled="!name.trim()" @click="startExploring" class="btn transition-colors duration-300 w-full md:w-auto">Start exploring</button>
+                </div>
+            </div>
+
+            <div class="w-full rounded-xl overflow-hidden transition-transform duration-500 hover:shadow-lg">
+                <img class="object-cover w-full h-64 md:h-auto rounded-lg" src="/assets/images/lily-banse--YHSwy6uqvk-unsplash.jpg" alt="Delicious Food">
             </div>
         </div>
-        <div class="w-full rounded-xl overflow-hidden hover:translate-y-[-8px] hover:shadow-lg hover:-rotate-1 transition-all hover:shadow hover:shadow-green-500/40 duration-500">
-            <img class="object-contain" src="\assets\images\lily-banse--YHSwy6uqvk-unsplash.jpg" alt="Delicious Food">
-        </div>
     </div>
-    </div>
-
 </template>
 
 <script setup>

@@ -57,7 +57,7 @@
                         </div>
                         
                         <div class="flex flex-wrap mt-2 gap-3 min-h-0 overflow-y-auto scrollbar-thin">
-                            <List-item :key="index" v-for="(item, index) in discoverItems" :item="item" />
+                            <List-item :key="index" v-for="(item, index) in discoverItems" :item="item" :type="discoverType" />
                         </div>
                     </div>
                 </div>
@@ -129,6 +129,14 @@ const initCategoryLogic = async () => {
 
 const discoverItems = ref([]);
 const activeDiscover = ref('Categories');
+
+const typeMap = {
+    Categories: 'category',
+    Countries: 'country',
+    Ingredients: 'ingredient'
+}
+
+const discoverType = computed(() => typeMap[activeDiscover.value] || 'category')
 
 const endpoints = {
     Categories: "https://www.themealdb.com/api/json/v1/1/list.php?c=list",
