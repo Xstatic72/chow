@@ -50,7 +50,7 @@
                 <div class="row-span-1 min-h-0 flex rounded-xl gap-8 border-2 p-6 bg-[var(--color-primary)]">
                     <div class="flex-1 flex flex-col min-h-0">
                         <div class="md:flex items-center justify-between mb-4">
-                            <p class="text-xl md:text-3xl text-white font-semibold mb-4">Discover By</p>
+                            <p class="text-xl md:text-3xl text-white font-semibold mb-4">Discover By <span class="text-xs md:text-sm -full">({{ discoverItems.length }})</span></p>
                             <DiscoverTabs
                             :active-tab="activeDiscover"
                             @select="loadDiscover"
