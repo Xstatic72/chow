@@ -1,9 +1,7 @@
 <template>
     <div class="relative group">
-        <!-- desktop icon inside input -->
-        <Search  class="lg:absolute left-4 top-1/2 h-5 w-5 lg:-translate-y-1/2 text-gray-400 group-focus-within:text-[var(--color-primary)] transition-colors duration-200 hidden md:block" />
+         <Search  class="lg:absolute left-4 top-1/2 h-5 w-5 lg:-translate-y-1/2 text-gray-400 group-focus-within:text-[var(--color-primary)] transition-colors duration-200 hidden md:block" />
 
-        <!-- mobile icon button (collapsed) -->
         <button
             v-if="!isMobileExpanded"
             @click="openMobile"
@@ -13,7 +11,6 @@
             <Search class="h-5 w-5 text-gray-400" />
         </button>
 
-        <!-- search input: visible on desktop or when mobile-expanded -->
         <input
             ref="inputRef"
             v-model="searchQuery"
@@ -28,12 +25,10 @@
             placeholder="search for a meal"
         />
 
-        <!-- close button on mobile when expanded -->
         <button v-if="isMobileExpanded" @click="closeMobile" class="md:hidden absolute right-3 top-1/2 -translate-y-1/2 p-1">
             <X class="h-5 w-5 text-gray-500" />
         </button>
 
-        <!-- results dropdown: show when active or mobile-expanded -->
         <div
             v-show="isSearchActive || isMobileExpanded"
             @mousedown.prevent
