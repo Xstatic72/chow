@@ -16,11 +16,11 @@
         <div v-else class="relative grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6">
                 <div v-for="(meal, index) in savedItems" :key="index" class="cursor-pointer hover:-translate-y-0.5 transition-transform duration-700" @click="navigateTo(`/dashboard/meal/${mealSlug(meal)}`)">
                     <div class="relative rounded-xl border border-gray-100 bg-white/70 p-3 shadow-sm">
-                        <div class="flex flex-col sm:flex-row gap-3 sm:items-start">
+                        <div class="flex sm:flex-row gap-3 sm:items-start">
                             <img :src="meal.strMealThumb" :alt="meal.strMeal" class="rounded-xl size-20 sm:size-24 object-cover shrink-0">
-                            <div class="flex flex-wrap gap-2">
-                                        <PillLink :link="`/dashboard/discover/${meal.strCategory}?type=category`" :name="meal.strCategory" class="bg-green-600/90 block text-[0.625rem]"  />
-                                        <PillLink :link="`/dashboard/discover/${meal.strArea}?type=country`" :name="meal.strArea" class="bg-green-600/90 block text-[0.625rem]"  />
+                            <div class="flex-wrap gap-2">
+                                        <PillLink :link="`/dashboard/discover/${meal.strCategory}?type=category`" :name="meal.strCategory" class="bg-green-600/90 m-2 block text-[0.625rem]"  />
+                                        <PillLink :link="`/dashboard/discover/${meal.strArea}?type=country`" :name="meal.strArea" class="bg-green-600/90 block m-2 text-[0.625rem]"  />
                             </div>
                         </div>
 
