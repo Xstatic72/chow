@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="grid grid-cols-1 lg:grid-cols-4 md:h-[90dvh] md:gap-4 p-2 md:p-4 mt-4">
+        <div class="grid grid-cols-1 lg:grid-cols-4 md:h-[90dvh] md:gap-4 p-3 md:p-4 mt-4">
             <div
                 class="relative cursor-pointer   md:col-span-2 min-h-[350px] md:h-[86dvh] bg-cover bg-center rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-[0.3deg] transition-all hover:shadow-green-500/50 duration-500"
                 :style="{ backgroundImage: `url('${randomMeal?.strMealThumb}')` }"
@@ -9,7 +9,7 @@
                 <div class="absolute inset-0 bg-black/45"></div>
                 <div class="relative flex justify-between z-10 p-4 md:p-8">
                     <div>
-                        <p class="text-white max-w-xs md:max-w-md text-lg md:text-4xl font-bold pb-2">{{ randomMeal?.strMeal }}</p>
+                        <p class="text-white max-w-xs md:max-w-md text-xl md:text-4xl font-bold pb-2">{{ randomMeal?.strMeal }}</p>
                         <div class="flex gap-4">
                             <div class="flex items-center gap-2">
                             <PillLink :name="randomMeal?.strCategory" />
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="col-span-2 grid grid-rows-[auto_1fr] gap-4 min-h-0 mt-4 lg:mt-0">
-                <div class="row-span-1 grid grid-cols-[auto_auto] justify-start gap-8">
+                <div class="row-span-1 grid grid-cols-[auto_auto] justify-start gap-7">
                     <div v-if="mealOTD?.strMeal" class="cursor-pointer " @click="navigateTo(`/dashboard/meal/${mealSlug(mealOTD)}`)">
                         <Card
                             title="Meal of the Day"
