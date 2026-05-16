@@ -29,6 +29,7 @@
 <script setup>
 import { ChevronDown, Heart, LogOut, Info } from '@lucide/vue';
 
+const { savedItems } = useSaved()
 const name = ref('You')
 const isMobileExpanded = useState('mobileSearchExpanded', () => false)
 const isUserOptionsOpen = ref(false)
@@ -41,8 +42,11 @@ onMounted(() => {
 const logout = () => {
     if (import.meta.client) {
         localStorage.clear()
+        savedItems.value = []
     }
     navigateTo('/')
+    
+
 }
 </script>
 
