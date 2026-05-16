@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div v-else class="text-center text-gray-500 mt-8">No meals found for this {{ config.label.toLowerCase() }}</div>
+    <div v-else class="flex flex-col items-center justify-center h-[80dvh] text-gray-400">No meals found for this {{ config.label.toLowerCase() }}</div>
   </div>
 </template>
 
