@@ -26,7 +26,7 @@
     </header>
 </template>
 
-<script setup type="ts">
+<script setup lang="ts">
 import { ChevronDown, Heart, LogOut, Info } from '@lucide/vue';
 
 const { savedItems } = useSaved()
