@@ -1,7 +1,7 @@
 <template>
     <header class="flex justify-between md:px-8 items-center p-2 border-b border-[var(--color-primary-light)]">
         <NuxtLink to="/"><h1 class="text-[var(--color-primary)] text-lg md:text-2xl">Chow</h1></NuxtLink>
-        <div @click="isUserOptionsOpen = !isUserOptionsOpen" :class="['relative flex text-[var(--color-primary)] font-semibold lg:ml-[10rem] p-2 rounded-xl cursor-pointer', { 'hover:bg-green-100': !isUserOptionsOpen }]">
+        <div ref="dropdownRef" @click="isUserOptionsOpen = !isUserOptionsOpen" :class="['relative flex text-[var(--color-primary)] font-semibold lg:ml-[10rem] p-2 rounded-xl cursor-pointer', { 'hover:bg-green-100': !isUserOptionsOpen }]">
             <p v-if="!isMobileExpanded" class=" text-sm md:text-lg whitespace-nowrap">Hey, {{ name }}</p>
             <Transition
             enter-active-class="transition duration-500 ease-out"
@@ -34,6 +34,25 @@ const name = ref('You')
 const isMobileExpanded = useState('mobileSearchExpanded', () => false)
 const isUserOptionsOpen = ref(false)
 const isAboutOpen = ref(false)
+const dropdownRef = ref(null)
+
+const handleClickOutside = (e: MouseEvent) => {
+if (dropdownRef.value && !dropdownRef.value.contains(e.target as Node)) {
+    isUserOptionsOpen.value = false
+}
+}
+
+watch(isUserOptionsOpen, (val) => {
+    if (val) {
+        document.addEventListener('click', handleClickOutside)
+    } else {
+        document.removeEventListener('click', handleClickOutside)
+    }
+})
+
+onUnmounted(() => {
+    document.removeEventListener('click', handleClickOutside)
+})
 
 onMounted(() => {
     name.value = localStorage.getItem('name') || 'You';
