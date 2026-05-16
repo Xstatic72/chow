@@ -17,7 +17,7 @@
                 <NuxtLink role="menuitem" tabindex="0" @click="logout" class="h-12 flex items-center px-4 hover:bg-emerald-300 focus:bg-emerald-300 focus:outline-none"><LogOut class="mr-2 h-5 w-5" />Logout</NuxtLink>
             </div>
             </Transition>
-            <ChevronDown v-if="!isMobileExpanded"  :class="['ml-2 mt-1 transition-transform duration-500', {'rotate-180': isUserOptionsOpen}]" />
+            <ChevronDown v-if="!isMobileExpanded"  :class="['ml-2 mt-1 size-4 md:size-5 transition-transform duration-500', {'rotate-180': isUserOptionsOpen}]" />
         </div>
         <Teleport to="body">
             <About v-if="isAboutOpen" @close="isAboutOpen=false" />
