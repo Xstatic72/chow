@@ -1,6 +1,6 @@
 <template>
     <span>
-        <p @click="goToDiscover" class="text-white px-4 py-1.5 border-2 cursor-pointer hover:bg-[var(--color-primary-light)] rounded-full">{{item}}</p>
+        <p @click="goToDiscover" class="text-white text-xs px-4 bg-white/15 py-1.5 border whitespace-nowrap cursor-pointer hover:bg-white hover:text-[var(--color-primary)] rounded-full">{{item}}</p>
     </span>
 </template>
 
