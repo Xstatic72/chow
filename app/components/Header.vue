@@ -1,6 +1,9 @@
 <template>
     <header class="flex justify-between md:px-8 items-center p-2 border-b border-[var(--color-primary-light)]">
-        <NuxtLink to="/"><h1 class="text-[var(--color-primary)] text-lg md:text-2xl">Chow</h1></NuxtLink>
+        <NuxtLink to="/" class="flex items-center">
+            <img class="size-12" src="/assets/images/chow logo.png" alt="Chow Logo">
+            <h1 class="text-[var(--color-primary)] text-lg md:text-2xl">Chow</h1>
+        </NuxtLink>
         <div ref="dropdownRef" @click="isUserOptionsOpen = !isUserOptionsOpen" :class="['relative flex text-[var(--color-primary)] font-semibold lg:ml-[10rem] p-2 rounded-xl cursor-pointer', { 'hover:bg-green-100': !isUserOptionsOpen }]">
             <p class=" text-sm md:text-lg whitespace-nowrap">Hey, {{ name }}</p>
             <Transition

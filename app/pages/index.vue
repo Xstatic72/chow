@@ -2,6 +2,7 @@
     <div class="min-h-screen flex items-center px-6 md:px-16 py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full items-center">
             <div class="flex flex-col gap-4 justify-center pr-0 md:pr-8">
+                <img class="size-20 -ml-4" src="/assets/images/chow logo.png" alt="Chow Logo">
                 <h1 class="text-4xl md:text-6xl mb-4 font-bold" style="color: var(--color-primary);">Welcome to Chow</h1>
                 <p class="text-base md:text-lg text-gray-700">Find fun recipes for meals from around the world. Whether you're a seasoned chef or just starting your cooking journey, these recipes are your key to creating mouthwatering masterpieces in your very own kitchen.</p>
 
