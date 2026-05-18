@@ -1,14 +1,13 @@
 <template>
-    <div class="relative group">
-         <Search  class="lg:absolute left-4 top-1/2 h-5 w-5 lg:-translate-y-1/2 text-gray-400 group-focus-within:text-[var(--color-primary)] transition-colors duration-200 hidden md:block" />
+    <div class="relative inline-block group">
+         <Search  class="lg:absolute right-4 top-1/2 h-5 w-5 lg:-translate-y-1/2 text-gray-400 group-focus-within:text-[var(--color-primary)] transition-colors duration-200 hidden md:block" />
 
         <button
-            v-if="!isMobileExpanded"
             @click="openMobile"
-            class="md:hidden p-2 rounded-lg"
+            class="md:hidden p-2 rounded-lg flex flex-col items-center gap-1"
             aria-label="Open search"
         >
-            <Search class="h-5 w-5 text-gray-400" />
+            <Search class="inline-block pointer-events-none size-5 text-gray-500" />
         </button>
 
         <input
@@ -18,21 +17,22 @@
             @focus="isSearchActive = true"
             @blur="isSearchActive = false"
             :class="[
-                'rounded-xl bg-gray-50 border border-gray-200 py-2.5 pl-12 pr-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[var(--color-primary)] transition-all duration-200',
-                isMobileExpanded ? 'block w-full' : 'hidden md:block w-80'
+                'rounded-xl bg-gray-50 py-2 md:py-2.5 focus:px-4 border-0 text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[var(--color-primary)] transition-all duration-500',
+                'md:block md:w-64',
+                'absolute right-2 w-0 top-0 md:px-3 focus:w-[290px] md:static md:right-auto md:w-64 md:focus:w-64',
             ]"
             type="text"
             placeholder="search for a meal"
         />
 
-        <button v-if="isMobileExpanded" @click="closeMobile" class="md:hidden absolute right-3 top-1/2 -translate-y-1/2 p-1">
+        <button v-if="isSearchActive" @click="closeMobile" class="md:hidden absolute right-3 top-1/2 -translate-y-1/2 p-1">
             <X class="h-5 w-5 text-gray-500" />
         </button>
 
         <div
-            v-show="isSearchActive || isMobileExpanded"
+            v-show="isSearchActive"
             @mousedown.prevent
-            class="absolute hide-scrollbar z-50 backdrop-blur-md bg-green-500/60 rounded-xl overflow-y-auto top-14 min-h-[200px] max-h-[300px] w-full flex text-white"
+            class="absolute hide-scrollbar z-50 backdrop-blur-md bg-green-500/60 rounded-xl overflow-y-auto top-14 min-h-[200px] max-h-[300px] right-0 w-[300px] md:w-full flex text-white"
         >
             <div v-if="searchResults.length > 0" class="flex flex-col w-full">
                 <div
