@@ -19,7 +19,7 @@
             :class="[
                 'rounded-xl bg-gray-50 py-2 md:py-2.5 focus:px-4 border-0 text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[var(--color-primary)] transition-all duration-500',
                 'md:block md:w-64',
-                'absolute right-2 w-0 top-0 md:px-3 focus:w-[290px] md:static md:right-auto md:w-64 md:focus:w-64',
+                'absolute right-2 w-0 top-0 px-0 lg:px-3  focus:w-[290px] md:static md:right-auto md:w-64 md:focus:w-64',
             ]"
             type="text"
             placeholder="search for a meal"
