@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="grid grid-cols-1 lg:grid-cols-4 md:h-[90dvh] md:gap-4 p-3 md:p-4 mt-4">
+        <div class="grid grid-cols-1 lg:grid-cols-4 lg:h-[90dvh] md:gap-4 p-3 md:p-4 mt-4">
             <div
                 class="relative cursor-pointer   md:col-span-2 min-h-[350px] md:h-[86dvh] bg-cover bg-center rounded-xl overflow-hidden hover:translate-y-[-10px] hover:shadow-lg hover:-rotate-[0.3deg] transition-all hover:shadow-green-500/50 duration-500"
                 :style="{ backgroundImage: `url('${randomMeal?.strMealThumb}')` }"
