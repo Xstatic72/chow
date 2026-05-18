@@ -1,6 +1,6 @@
 <template>
     <div class="relative inline-block group">
-         <Search  class="lg:absolute right-4 top-1/2 h-5 w-5 lg:-translate-y-1/2 text-gray-400 group-focus-within:text-[var(--color-primary)] transition-colors duration-200 hidden md:block" />
+         <Search  class="md:absolute right-4 top-1/2 h-5 w-5 lg:-translate-y-1/2 text-gray-400 group-focus-within:text-[var(--color-primary)] transition-colors duration-200 hidden md:block" />
 
         <button
             @click="openMobile"
