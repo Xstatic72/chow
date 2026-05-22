@@ -19,7 +19,7 @@
             :class="[
                 'rounded-xl bg-gray-50 py-2 md:py-2.5 focus:px-4 border-0 text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[var(--color-primary)] transition-all duration-700',
                 'md:block md:w-64',
-                'absolute right-2 w-0 top-0 px-0 md:px-3  focus:w-[320px] md:static md:right-auto md:w-64 md:focus:w-64',
+                'absolute right-2 w-0 top-0 px-0 md:px-3  focus:w-[83vw] md:static md:right-auto md:w-64 md:focus:w-64',
             ]"
             type="text"
             placeholder="search for a meal"
@@ -32,7 +32,7 @@
         <div
             v-show="isSearchActive"
             @mousedown.prevent
-            class="absolute hide-scrollbar z-50 backdrop-blur-md bg-green-500/60 rounded-xl overflow-y-auto top-14 min-h-[200px] max-h-[300px] right-1 w-[330px] md:w-full flex text-white"
+            class="absolute hide-scrollbar z-50 backdrop-blur-md bg-green-500/60 rounded-xl overflow-y-auto top-14 min-h-[200px] max-h-[300px] right-1 w-[85vw] md:w-full flex text-white"
         >
             <div v-if="searchResults.length > 0" class="flex flex-col w-full">
                 <div
