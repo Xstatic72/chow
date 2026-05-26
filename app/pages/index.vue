@@ -23,7 +23,7 @@
     const name = ref('');
     const startExploring = () => {
 
-        localStorage.setItem('name', name.value);
+        localStorage.setItem('name', name.value.trim().split(' ')[0]);
 
         // redirect to dashboard page
         navigateTo('/dashboard');

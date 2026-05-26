@@ -13,7 +13,7 @@
         <input
             ref="inputRef"
             v-model="searchQuery"
-            @input="debouncedSearch(searchQuery)"
+            @input="debouncedSearch(searchQuery.trim())"
             @focus="isSearchActive = true"
             @blur="isSearchActive = false"
             :class="[
