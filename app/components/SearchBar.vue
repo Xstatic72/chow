@@ -44,8 +44,11 @@
                     {{ meal.strMeal }}
                 </div>
             </div>
+            <div v-else-if="!searchQuery.trim()" class="w-full h-full text-center my-auto text-white">
+                Type to search
+            </div>
             <div v-else class="w-full h-full text-center my-auto text-white">
-                type to search
+                No results found
             </div>
         </div>
     </div>
