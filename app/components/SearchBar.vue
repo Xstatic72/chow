@@ -13,7 +13,7 @@
         <input
             ref="inputRef"
             v-model="searchQuery"
-            @input="debouncedSearch(searchQuery.trim())"
+            @input="handleSearchInput"
             @focus="isSearchActive = true"
             @blur="isSearchActive = false"
             :class="[
@@ -34,7 +34,10 @@
             @mousedown.prevent
             class="absolute hide-scrollbar z-50 backdrop-blur-md bg-green-500/60 rounded-xl overflow-y-auto top-14 min-h-[200px] max-h-[300px] right-1 w-[85vw] md:w-full flex text-white"
         >
-            <div v-if="searchResults.length > 0" class="flex flex-col w-full">
+            <div v-if="isLoading" class="w-full h-full text-center my-auto">
+                <Spinner />
+            </div>
+            <div v-else-if="searchResults.length > 0" class="flex flex-col w-full">
                 <div
                     v-for="meal in searchResults"
                     :key="meal.idMeal"
@@ -64,6 +67,7 @@ const isSearchActive = ref(false);
 const isMobileExpanded = useState('mobileSearchExpanded', () => false);
 const searchResults = ref([])
 const inputRef = ref(null)
+const isLoading = ref(false)
 
 const openMobile = async () => {
     isMobileExpanded.value = true
@@ -74,6 +78,20 @@ const openMobile = async () => {
 const closeMobile = () => {
     isMobileExpanded.value = false
     isSearchActive.value = false
+}
+
+const handleSearchInput = () => {
+    const query = searchQuery.value.trim()
+
+    if (!query) {
+        searchResults.value = []
+        isLoading.value = false
+        return
+    }
+
+    isSearchActive.value = true
+    isLoading.value = true
+    debouncedSearch(query)
 }
 
 const debounce = (func, delay = 400) => {
@@ -91,15 +109,30 @@ const debounce = (func, delay = 400) => {
 const handleSearch = async (query) => {
     if (!query.trim()) {
         searchResults.value = []
+        isLoading.value = false
         return
     }
 
     localStorage.setItem('searchValue', query);
 
-    const data = await $fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(query)}`);
+    try {
+    isLoading.value = true
+     const data = await $fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(query)}`);
     searchResults.value = data?.meals || []
     console.log(searchResults.value);
+
+    }
+    catch (error) {
+        console.error('Error fetching search results:', error);
+        searchResults.value = []
+    }
+    finally {
+        isLoading.value = false
+    }
+
+   
 }
+
 
 const debouncedSearch = debounce(handleSearch, 300)
 
