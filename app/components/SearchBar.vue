@@ -37,16 +37,18 @@
             <div v-if="isLoading" class="w-full h-full text-center my-auto">
                 <Spinner />
             </div>
-            <div v-else-if="searchResults.length > 0" class="flex flex-col w-full">
-                <div
-                    v-for="meal in searchResults"
-                    :key="meal.idMeal"
-                    @click="goToMeal(meal)"
-                    class="flex items-center px-3 py-3.5 border-b border-gray-300 hover:bg-white/20 cursor-pointer transition-all duration-200 group"
-                >
-                    {{ meal.strMeal }}
-                </div>
+           <div v-else-if="searchResults.length > 0" class="flex flex-col w-full">
+              <button 
+                v-for="meal in searchResults" 
+                :key="meal.idMeal" 
+                type="button"
+                @click="goToMeal(meal)" 
+                class="flex items-center px-3 py-3.5 border-b border-gray-300 hover:bg-white/20 text-left w-full transition-all duration-200 group"
+              >
+                {{ meal.strMeal }}
+              </button>
             </div>
+
             <div v-else-if="!searchQuery.trim()" class="w-full h-full text-center my-auto text-white">
                 Type to search
             </div>
