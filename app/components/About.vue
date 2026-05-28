@@ -17,10 +17,10 @@
              <button @click="$emit('close')" class="absolute top-4 right-4 text-white hover:text-gray-300 hover:rotate-90 transition-all duration-200">
                 <X class="size-6" />
             </button>
-            <h1 class="text-2xl pb-4">Chow</h1>
-            <p>Welcome to Chow! This platform was built by <a href="https://onyedikachukwu.vercel.app/" target="_blank" class="underline hover:text-gray-300">Onyedikachukwu Okeke</a> in May, 2026
-              as a capstone project during an internship at <a href="https://wearecheck.co/" target="_blank" class="underline hover:text-gray-300">Check</a>.</p>
-              <p> This app was built around the API from <a href="https://www.themealdb.com/api.php" target="_blank" class="underline hover:text-gray-300">TheMealDB.com</a>. Chow serves as a hands-on exploration of responsive frontend architecture using Vue and Nuxt.</p>
+            <h1 id="about-title" class="text-2xl pb-4">Chow</h1>
+            <p>Welcome to Chow! This platform was built by <a href="https://onyedikachukwu.vercel.app/" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-300">Onyedikachukwu Okeke</a> in May, 2026
+              as a capstone project during an internship at <a href="https://wearecheck.co/" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-300">Check</a>.</p>
+              <p> This app was built around the API from <a href="https://www.themealdb.com/api.php" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-300">TheMealDB.com</a>. Chow serves as a hands-on exploration of responsive frontend architecture using Vue and Nuxt.</p>
         </div>
         </div>
     </Transition>
