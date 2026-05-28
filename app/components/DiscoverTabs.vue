@@ -6,7 +6,7 @@
                 width: slider.width + 'px',
                 height: slider.height + 'px',
                 transform: `translateX(${slider.left}px)`,
-                transition: 'transform 600ms cubic-bezier(0.44, 1.58 , 0.64, 1), width 500ms ease'
+                transition: 'transform 600ms cubic-bezier(0.44, 1.45 , 0.64, 1), width 500ms ease'
             }"
         />
 
