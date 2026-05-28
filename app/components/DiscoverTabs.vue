@@ -43,7 +43,7 @@ const updateSlider = () => {
     slider.value = {
         width: activeEl.offsetWidth,
         height: activeEl.offsetHeight,
-        left: activeEl.offsetLeft - 2
+        left: activeEl.offsetLeft - 4
     }
 }
 
