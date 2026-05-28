@@ -1,5 +1,5 @@
 <template>
-    <div class="relative flex bg-white/20 rounded-xl p-1">
+    <div class="relative w-fit flex bg-white/20 rounded-xl p-1">
         <div
             class="absolute rounded-xl bg-white"
             :style="{
