@@ -12,9 +12,9 @@
     .loader {
     border: 5px solid #f3f3f300;
     border-radius: 50%;
-    border-top: 5px solid #ffffff;
-    width: 40px;
-    height: 40px;
+    border-top: 3px solid #ffffff72;
+    width: 30px;
+    height: 30px;
     -webkit-animation: spin 2s infinite ease-in-out; /* Safari */
     animation: spin 2s infinite ease-in-out;
   }
