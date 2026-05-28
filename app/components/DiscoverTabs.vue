@@ -1,5 +1,5 @@
 <template>
-    <div class="relative shrink-0 flex bg-white/20 rounded-xl p-1">
+    <div class="relative flex bg-white/20 rounded-xl p-1">
         <div
             class="absolute rounded-xl bg-white"
             :style="{
@@ -17,7 +17,7 @@
             type="button"
             @click="$emit('select', tab)"
             :class="[
-                'relative z-10 py-1.5 px-6 rounded-xl text-sm cursor-pointer transition-all duration-500',
+                'relative z-10 py-1.5 px-5 rounded-xl text-sm cursor-pointer transition-all duration-500',
                 activeTab === tab ? 'text-[var(--color-primary)]' : 'text-white hover:bg-white/20 hover:scale-90'
             ]"
         >
@@ -43,7 +43,7 @@ const updateSlider = () => {
     slider.value = {
         width: activeEl.offsetWidth,
         height: activeEl.offsetHeight,
-        left: activeEl.offsetLeft - 4
+        left: activeEl.offsetLeft - 2
     }
 }
 

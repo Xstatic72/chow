@@ -121,8 +121,6 @@ const handleSearch = async (query) => {
     isLoading.value = true
      const data = await $fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(query)}`);
     searchResults.value = data?.meals || []
-    console.log(searchResults.value);
-
     }
     catch (error) {
         console.error('Error fetching search results:', error);
