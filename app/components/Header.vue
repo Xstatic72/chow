@@ -1,5 +1,5 @@
 <template>
-    <header class="flex justify-between md:px-8 items-center p-2 border-b border-[var(--color-primary-light)]">
+    <header class="flex justify-between md:px-8 items-center p-2 border-b border-green-300/40">
         <NuxtLink to="/" class="flex items-center">
             <img class="size-12" src="/assets/images/chow logo.png" alt="Chow Logo">
             <h1 class="text-[var(--color-primary)] text-lg md:text-2xl">Chow</h1>
