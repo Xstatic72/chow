@@ -12,7 +12,7 @@
                 </form>
             </div>
 
-            <div class="w-full rounded-xl overflow-hidden transition-transform duration-500 hover:shadow-lg">
+            <div class="w-full rounded-xl overflow-hidden transition-transform duration-500 hover:shadow-lg hover:translate-y-[-5px] hover:shadow-green-500/50 hover:-rotate-[0.3deg]">
                 <img class="object-cover w-full h-64 md:h-auto rounded-lg" src="/assets/images/lily-banse--YHSwy6uqvk-unsplash.jpg" alt="Delicious Food">
             </div>
         </div>
