@@ -7,12 +7,12 @@
                 <p class="text-base md:text-lg text-gray-700">Find fun recipes for meals from around the world. Whether you're a seasoned chef or just starting your cooking journey, these recipes are your key to creating mouthwatering masterpieces in your very own kitchen.</p>
 
                 <form class="text-lg flex flex-col md:flex-row gap-4 mt-4" @submit.prevent="startExploring">
-                    <input v-model="name" class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] w-full md:w-auto" type="text" placeholder="What's your name?">
+                    <input v-model="name" maxlength="50" class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] w-full md:w-auto" type="text" placeholder="What's your name?">
                     <button type="submit" :disabled="!name.trim()" class="btn transition-colors duration-300 w-full md:w-auto">Start exploring</button>
                 </form>
             </div>
 
-            <div class="w-full rounded-xl overflow-hidden transition-transform duration-500 hover:shadow-lg hover:translate-y-[-5px] hover:shadow-green-500/50 hover:-rotate-[0.3deg]">
+            <div class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:translate-y-[-5px] hover:shadow-green-500/50 hover:-rotate-[0.3deg]">
                 <img class="object-cover w-full h-64 md:h-auto rounded-lg" src="/assets/images/lily-banse--YHSwy6uqvk-unsplash.jpg" alt="Delicious Food">
             </div>
         </div>
