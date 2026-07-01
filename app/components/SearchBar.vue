@@ -12,7 +12,7 @@
 
         <input
             ref="inputRef"
-            v-model="searchQuery"
+            v-model.trim="searchQuery"
             @input="handleSearchInput"
             @focus="isSearchActive = true"
             @blur="isSearchActive = false"
@@ -49,7 +49,7 @@
               </button>
             </div>
 
-            <div v-else-if="!searchQuery.trim()" class="w-full h-full text-center my-auto text-white">
+            <div v-else-if="!searchQuery" class="w-full h-full text-center my-auto text-white">
                 Type to search
             </div>
             <div v-else class="w-full h-full text-center my-auto text-white">
@@ -83,7 +83,7 @@ const closeMobile = () => {
 }
 
 const handleSearchInput = () => {
-    const query = searchQuery.value.trim()
+    const query = searchQuery.value
 
     if (!query) {
         searchResults.value = []
@@ -109,7 +109,7 @@ const debounce = (func, delay = 400) => {
 }
 
 const handleSearch = async (query) => {
-    if (!query.trim()) {
+    if (!query) {
         searchResults.value = []
         isLoading.value = false
         return
