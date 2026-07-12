@@ -26,7 +26,7 @@
                 </div>
                 <div class="absolute flex items-center bottom-4 left-4 z-10">
                     <p class="text-white md:text-xl p-6">Try this! or</p>
-                    <button @click.stop="getRandomMeal" class="flex items-center p-4 bg-transparent hover:bg-[var(--color-btn-hover)] text-white font-bold md:text-xl border-2 border-[var(--color-btn-hover)] rounded-xl transition-colors duration-300">Something else <Shuffle class="ml-1" /></button>
+                    <button @click.stop="getRandomMeal" class="flex items-center p-4 bg-transparent hover:bg-[var(--color-btn-hover)] active:scale-95 text-white font-bold md:text-xl border-2 border-[var(--color-btn-hover)] rounded-xl transition-colors duration-300">Something else <Shuffle class="ml-1" /></button>
                 </div>
             </div>
             <div class="col-span-2 grid grid-rows-[auto_1fr] gap-4 min-h-0 mt-4 lg:mt-0">
